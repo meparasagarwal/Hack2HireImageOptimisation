@@ -5,7 +5,7 @@ function Header(){
     return(
         <nav class="navbar bg-dark">
         <h1>
-          <a href="index.html">Image Compressor</a>
+          <a href="index.html"><center>Image Compressor</center></a>
         </h1>
         <ul>
           <li>

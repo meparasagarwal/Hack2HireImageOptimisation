@@ -3,7 +3,8 @@ import React, { Fragment } from "react";
 function Home() {
 	return (
 		<Fragment>
-			<div class="container">
+		<center>
+			<div class="upload">
 				<header class="page-header">
 					<h4></h4>
 					<h1>Upload Image</h1>
@@ -18,21 +19,25 @@ function Home() {
 								</label>
 								<div class="input-group">
 									<input
+										style={{fontSize: "large"}}
 										type="text"
 										name="filename"
 										class="form-control"
-										placeholder="No file selected"
+										placeholder="Enter File Name to save"
 										readonly
-									/>
+									/><br/>
 									<span class="input-group-btn">
 										<div class="btn btn-default  custom-file-uploader">
 											<p></p>
-											<input
+											< input style = {{font: "inherit"}}
 												type="file"
 												name="file"
 												onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''"
 											/>
-										</div>
+										</div><br/>
+										< input className = "btn btn-primary"
+										type = "submit"
+										value = "Submit" / >
 									</span>
 								</div>
 							</div>
@@ -40,6 +45,7 @@ function Home() {
 					</div>
 				</form>
 			</div>
+		</center>
 			<br /> <br /> <br /> <br /> <br />
 			<center>
 				<h1>IMAGE GALLERY</h1>

@@ -610,6 +610,10 @@ button {
     }
 }
 
+.upload{
+    margin-top: 12%;
+}
+
 .gallery img:hover {
     opacity: 0.7;
 }

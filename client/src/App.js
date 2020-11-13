@@ -13,31 +13,26 @@ import {
 } from "react-router-dom";
 
 function App() {
-    return ( < Router >
-        <
-        Fragment >
-
-        <
-        section >
-        <
-        Route exact path = "/"
+    return ( <Router>
+        <Fragment>
+        <Header></Header>
+        <section>
+        <Route exact path = "/"
         component = {
             Register
-        }
-        />   <
-        Route exact path = "/login"
+        }/>   
+        <Route exact path = "/login"
         component = {
             Login
-        }
-        />   <
+        }/>   
+        <
         Route exact path = "/home"
         component = {
             Home
-        }
-        />   <
-        /section>   <
-        /Fragment>   <
-        /Router>
+        }/>   
+        </section>   
+        </Fragment>   
+        </Router>
     );
 }
 

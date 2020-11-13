@@ -1,25 +1,17 @@
 import React from "react";
-import {
-    Link
-} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 function Header() {
-    return ( <
-        nav class = "navbar bg-dark" >
-        <
-        h1 >
-        <
-        a href = "index.html" > < center > Image Compressor < /center></a >
-        <
-        /h1> <
-        ul >
-        <
-        li >
-        <
-        Link to = "/login" > Login < /Link> < /
-        li > <
-        /ul> < /
-        nav >
+    return ( 
+        <nav className= "navbar bg-dark">
+        <h1 className="text-primary" style={{fontSize:"40px"}}> Image Compressor
+        </h1>
+        <ul>
+        <li >
+        <Link to = "/login" style={{fontSize:"25px"}}>Login </Link> 
+        </li>
+        </ul>
+        </nav>
     );
 }
 

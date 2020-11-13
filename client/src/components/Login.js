@@ -1,8 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 function Login(){
     return (
-        <section class="container">
+      <section class = "landing" >
+      <div class = "dark-overlay" >
+      <div class = "landing-inner" >
+      <section class="container">
         <div class="alert alert-danger">
           Invalid credentials
         </div>
@@ -27,9 +31,13 @@ function Login(){
           <input type="submit" class="btn btn-primary" value="Login" />
         </form>
         <p class="my-1">
-          Don't have an account? <a href="register.html">Register</a>
+          Don't have an account? <a href="/">Register</a>
         </p>
       </section>
+      </div>
+      </div>
+      </section>
+        
     );
 }
 

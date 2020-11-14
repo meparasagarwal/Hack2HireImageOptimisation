@@ -21,7 +21,7 @@ function Login(){
                   <div className = "landing-inner" >
                   <section className="container">
                   <h1 className="large text-primary" style={{color:"whitesmoke"}}>Login and Compress Images</h1>
-                    <h1 className="large text-primary">Register</h1>
+                    <h1 className="large text-primary">Login</h1>
                     <p className="lead"><i className="fas fa-user"></i>Login to your Account</p>
                     <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
                       <div className="form-group">

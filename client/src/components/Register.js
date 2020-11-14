@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 function Register(){
   const [formData,setFormData]=useState({
@@ -21,12 +22,13 @@ function Register(){
       const response=await fetch("/register",{
         method:"POST",
         headers:{
-        "Content-Type":"application/json";
+        "Content-Type":"application/json"
         },
-        body:JSON.stringify(formData);
+        body:JSON.stringify(formData)
       });
       if(response.ok){
-        console.log("Response worked");
+        console.log("Worked");
+        <Redirect to="/home" />
       }
     }
   };

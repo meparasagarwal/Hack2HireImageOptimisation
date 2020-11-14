@@ -16,7 +16,7 @@ function Login(){
           const onSubmit=async e => {
             e.preventDefault();
             const formData={email,password};
-            const response=await fetch("/register",{
+            const response=await fetch("/login",{
               method:"POST",
               headers:{
               "Content-Type":"application/json"
@@ -26,9 +26,11 @@ function Login(){
             if(response.ok){
               console.log("Response Worked");
               history.push("/home");
-            }else{
-              console.log("Invalid credentials");
             }
+            else{
+              alert("Invalid credentials");
+            }
+          }
         return (
                   <section className = "landing" >
                   <div className = "dark-overlay" >

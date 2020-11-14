@@ -1,6 +1,9 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
+
+
 
 function Register(){
   const [formData,setFormData]=useState({
@@ -17,7 +20,7 @@ function Register(){
   const onSubmit=async e => {
     e.preventDefault();
     if(password !== password2){
-      console.log("Passwords don't match");
+      alert("Passwords don't match",'danger');
     }else{
       const formData={name,email,password};
       const response=await fetch("/register",{

@@ -5,20 +5,15 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
-import {Provider} from "react-redux";
-import store from "./store";
 
 function App() {
     return (
-        <Provider store={store}>
         <Router>
         <Fragment>
         <Header></Header>
         <section>
-        <Route exact path = "/"
-        component = {
-            Register
-        }/>   
+        <Switch>
+        <Route exact path = "/"component = {Register }/>   
         <Route exact path = "/login"
         component = {
             Login
@@ -27,10 +22,10 @@ function App() {
         component = {
             Home
         }/>   
+        </Switch>
         </section>   
         </Fragment>   
         </Router>
-        </Provider>
         
     );
 }

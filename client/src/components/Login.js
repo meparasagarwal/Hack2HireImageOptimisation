@@ -1,5 +1,6 @@
 import React,{useState} from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 
 function Login(){
@@ -7,14 +8,27 @@ function Login(){
             email:"",
             password:"",
           });
+          const history=useHistory();
           const {email,password}=formData;
           const onChange=e=>
           setFormData({...formData,[e.target.name]:e.target.value});
         
-          const onSubmit=e => {
+          const onSubmit=async e => {
             e.preventDefault();
-            console.log("Success");
-            };
+            const formData={email,password};
+            const response=await fetch("/register",{
+              method:"POST",
+              headers:{
+              "Content-Type":"application/json"
+              },
+              body:JSON.stringify(formData)
+            });
+            if(response.ok){
+              console.log("Response Worked");
+              history.push("/home");
+            }else{
+              console.log("Invalid credentials");
+            }
         return (
                   <section className = "landing" >
                   <div className = "dark-overlay" >

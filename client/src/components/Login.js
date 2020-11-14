@@ -26,11 +26,17 @@ function Login(){
             if(response.ok){
               console.log("Response Worked");
               history.push("/home");
+<<<<<<< HEAD
             }
             else{
               alert("Invalid credentials");
             }
           }
+=======
+            }else{
+              console.log("Invalid credentials");
+            }}
+>>>>>>> 29c5c8c76ece90b7b4410fac132e7d5d6c1b300f
         return (
                   <section className = "landing" >
                   <div className = "dark-overlay" >
@@ -56,7 +62,7 @@ function Login(){
                       <input type="submit" className="btn btn-primary" value="Login" />
                     </form>
                     <p className="my-1">
-                      Already have an account? <Link to="/">register</Link>
+                      Already have an account? <Link to="/">Register</Link>
                     </p>
                   </section>
                   </div>

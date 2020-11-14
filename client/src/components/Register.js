@@ -22,11 +22,12 @@ function Register(){
       const response=await fetch("/register",{
         method:"POST",
         headers:{
-        "Content-Type":"application/json";
+        "Content-Type":"application/json"
         },
-        body:JSON.stringify(formData);
+        body:JSON.stringify(formData)
       });
       if(response.ok){
+        console.log("Response Worked");
         <Redirect to="/home" />
       }
     }

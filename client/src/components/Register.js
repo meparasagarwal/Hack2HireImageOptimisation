@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 function Register(){
   const [formData,setFormData]=useState({
@@ -26,7 +27,7 @@ function Register(){
         body:JSON.stringify(formData);
       });
       if(response.ok){
-        console.log("Response worked");
+        <Redirect to="/home" />
       }
     }
   };

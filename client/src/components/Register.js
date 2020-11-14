@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
-import {Redirect} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function Register(){
   const [formData,setFormData]=useState({
@@ -9,6 +9,7 @@ function Register(){
     password:"",
     password2:"",
   });
+  let history=useHistory();
   const {name,email,password,password2}=formData;
   const onChange=e=>
   setFormData({...formData,[e.target.name]:e.target.value});
@@ -28,7 +29,7 @@ function Register(){
       });
       if(response.ok){
         console.log("Response Worked");
-        <Redirect to="/home" />
+        history.push("/home");
       }
     }
   };
@@ -68,7 +69,7 @@ function Register(){
                   minLength="6"
                 />
               </div>
-              <input type="submit" className="btn btn-primary" value="Register" />
+              <input type="submit" className="btn btn-primary" value="Register"  />
             </form>
             <p className="my-1">
               Already have an account? <Link to="/login">Login</Link>

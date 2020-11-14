@@ -23,8 +23,7 @@ function App() {
         component = {
             Login
         }/>   
-        <
-        Route exact path = "/home"
+        <Route exact path = "/home"
         component = {
             Home
         }/>   

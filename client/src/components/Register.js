@@ -12,12 +12,22 @@ function Register(){
   const onChange=e=>
   setFormData({...formData,[e.target.name]:e.target.value});
 
-  const onSubmit=e => {
+  const onSubmit=async e => {
     e.preventDefault();
     if(password !== password2){
       console.log("Passwords don't match");
     }else{
-      console.log(formData);
+      const formData={name,email,password};
+      const response=await fetch("/register",{
+        method:"POST",
+        headers:{
+        "Content-Type":"application/json";
+        },
+        body:JSON.stringify(formData);
+      });
+      if(response.ok){
+        console.log("Response worked");
+      }
     }
   };
 

@@ -27,7 +27,7 @@ function Register(){
         body:JSON.stringify(formData)
       });
       if(response.ok){
-        console.log("Worked");
+        console.log("Response Worked");
         <Redirect to="/home" />
       }
     }

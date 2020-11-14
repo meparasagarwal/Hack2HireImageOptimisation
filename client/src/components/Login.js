@@ -16,7 +16,7 @@ function Login(){
           const onSubmit=async e => {
             e.preventDefault();
             const formData={email,password};
-            const response=await fetch("/register",{
+            const response=await fetch("/login",{
               method:"POST",
               headers:{
               "Content-Type":"application/json"
@@ -28,7 +28,7 @@ function Login(){
               history.push("/home");
             }else{
               console.log("Invalid credentials");
-            }
+            }}
         return (
                   <section className = "landing" >
                   <div className = "dark-overlay" >
@@ -54,7 +54,7 @@ function Login(){
                       <input type="submit" className="btn btn-primary" value="Login" />
                     </form>
                     <p className="my-1">
-                      Already have an account? <Link to="/">register</Link>
+                      Already have an account? <Link to="/">Register</Link>
                     </p>
                   </section>
                   </div>

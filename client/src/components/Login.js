@@ -5,13 +5,14 @@ import Header from "./Header";
 import axios from "axios";
 
 function Login(){
-          useEffect(()=>axios.get("/login")
-          .then((response)=>{})
-          .catch(err=>{
-            if(err){
-              console.log(err);
-            }
-          }))
+  useEffect(()=>{
+		fetch("/login")
+		.then((response)=>{
+			if (response.status === 400){
+				console.log("Logged in succesfully");
+			}
+		})
+    });
           const [formData,setFormData]=useState({
             email:"",
             password:"",

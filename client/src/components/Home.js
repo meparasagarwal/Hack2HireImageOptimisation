@@ -20,7 +20,7 @@ function Home() {
         </h1>
         <ul>
         <li >
-        <Link to = "/logout" style={{fontSize:"25px"}}>Logout</Link> 
+        <Link to = "/login" style={{fontSize:"25px"}}>Logout</Link> 
         </li>
         </ul>
         </nav>

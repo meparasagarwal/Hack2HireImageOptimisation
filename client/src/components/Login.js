@@ -25,7 +25,7 @@ function Login(){
             });
             if(response.ok){
               console.log("Response Worked");
-              history.push("/home");
+              history.push("/try");
             }
             else{
               alert("Invalid credentials");

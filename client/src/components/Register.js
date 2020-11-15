@@ -31,7 +31,7 @@ function Register(){
       });
       if(response.ok){
         console.log("Response Worked");
-        history.push("/home");
+        history.push("/try");
       }
     }
   };

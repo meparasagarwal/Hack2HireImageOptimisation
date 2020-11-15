@@ -5,7 +5,7 @@ import {useEffect} from "react";
 function Logout(){
     let history = useHistory();
 	useEffect(()=>{
-		fetch("/home")
+		fetch("/logout")
 		.then((response)=>{
 			if (response.status === 201){
 				history.push("/login")

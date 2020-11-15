@@ -1,63 +1,29 @@
 import React, { Fragment,useState } from "react";
+import {Link} from "react-router-dom";
 import {useEffect} from "react";
-/*import {useHistory} from "react-router-dom";*/
-import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 function Home() {
-	const [file,setFile]=useState('');
-	const [fileName,setFileName]=useState('');
-	const [uploadedFile, setUploadedFile] = useState({});
-	const [uploadPercentage, setUploadPercentage] = useState(0);
-	
-	const onChange=e=>{
-		setFile(e.target.files[0]);
-		setFileName(e.target.files[0].name);
-	}
-	const onSubmit = async e => {
-		e.preventDefault();
-		const formData = new FormData();
-		formData.append('file', file);
-	
-		try {
-		  const res = await axios.post('/upload', formData, {
-			headers: {
-			  'Content-Type': 'multipart/form-data'
-			},
-			onUploadProgress: progressEvent => {
-			  setUploadPercentage(
-				parseInt(
-				  Math.round((progressEvent.loaded * 100) / progressEvent.total)
-				)
-			  );
-			  setTimeout(() => setUploadPercentage(0), 10000);
-			}
-		  });
-	
-		  const { fileName, filePath } = res.data;
-	
-		  setUploadedFile({ fileName, filePath });
-	
-		  console.log('File Uploaded');
-		} catch (err) {
-		  if (err.response.status === 500) {
-			  console.log('There was a problem with the server');
-		  } else {
-			console.log(err.response.data.msg);
-		  }
-		}
-	  };
-	/*let history = useHistory();
+	let history = useHistory();
 	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 400){
 				history.push("/login")
-
 			}
 		})
-	});*/
+    });
 	return (
 		<Fragment>
+		<nav className= "navbar bg-dark">
+        <h1 className="text-primary" style={{fontSize:"40px"}}> Image Compressor
+        </h1>
+        <ul>
+        <li >
+        <Link to = "/logout" style={{fontSize:"25px"}}>Logout</Link> 
+        </li>
+        </ul>
+        </nav>
 		<center>
 			<div class="upload">
 				<header class="page-header">
@@ -65,7 +31,7 @@ function Home() {
 					<h1>Upload Image</h1>
 				</header>
 
-				<form onSubmit={e=>onSubmit(e)} autoComplete="off">
+				<form  autoComplete="off">
 					<div class="row">
 						<div class="col-sm-7 col-md-6 col-lg-5">
 							<div class="form-group">
@@ -73,15 +39,12 @@ function Home() {
 									File
 								</label>
 								<div class="input-group">
-									<label style={{fontSize: "large"}}>{fileName}</label><br/>
+									<label style={{fontSize: "large"}}></label><br/>
 									<span class="input-group-btn">
 										<div class="btn btn-default  custom-file-uploader">
 											<p></p>
 											<input style = {{font: "inherit"}}
 												type="file"
-												name="file"
-												value={file}
-												onChange={e=>onChange(e)}
 											/>
 										</div><br/>
 										<input className = "btn btn-primary"
@@ -94,14 +57,6 @@ function Home() {
 					</div>
 				</form>
 			</div>
-			{uploadedFile ? (
-				<div className='row mt-5'>
-				  <div className='col-md-6 m-auto'>
-					<h3 className='text-center'>{uploadedFile.fileName}</h3>
-					<img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
-				  </div>
-				</div>
-			  ) : null}
 		</center>
 			<br /> <br /> <br /> <br /> <br />
 			<center>

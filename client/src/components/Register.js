@@ -32,7 +32,7 @@ function Register(){
       });
       if(response.ok){
         console.log("Response Worked");
-        history.push("/try");
+        history.push("/home");
       }
     }
   };

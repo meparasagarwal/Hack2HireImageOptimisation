@@ -1,8 +1,51 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState } from "react";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
+import axios from "axios";
 
 function Home() {
+	const [file,setFile]=useState('');
+	const [fileName,setFileName]=useState('');
+	const [uploadedFile, setUploadedFile] = useState({});
+	const [uploadPercentage, setUploadPercentage] = useState(0);
+	
+	const onChange=e=>{
+		setFile(e.target.files[0]);
+		setFileName(e.target.files[0].name);
+	}
+	const onSubmit = async e => {
+		e.preventDefault();
+		const formData = new FormData();
+		formData.append('file', file);
+	
+		try {
+		  const res = await axios.post('/upload', formData, {
+			headers: {
+			  'Content-Type': 'multipart/form-data'
+			},
+			onUploadProgress: progressEvent => {
+			  setUploadPercentage(
+				parseInt(
+				  Math.round((progressEvent.loaded * 100) / progressEvent.total)
+				)
+			  );
+			  setTimeout(() => setUploadPercentage(0), 10000);
+			}
+		  });
+	
+		  const { fileName, filePath } = res.data;
+	
+		  setUploadedFile({ fileName, filePath });
+	
+		  console.log('File Uploaded');
+		} catch (err) {
+		  if (err.response.status === 500) {
+			  console.log('There was a problem with the server');
+		  } else {
+			console.log(err.response.data.msg);
+		  }
+		}
+	  };
 	let history = useHistory();
 	useEffect(()=>{
 		fetch("/home")
@@ -21,7 +64,7 @@ function Home() {
 					<h1>Upload Image</h1>
 				</header>
 
-				<form>
+				<form onSubmit={e=>onSubmit(e)} autoComplete="off">
 					<div class="row">
 						<div class="col-sm-7 col-md-6 col-lg-5">
 							<div class="form-group">
@@ -29,26 +72,20 @@ function Home() {
 									File
 								</label>
 								<div class="input-group">
-									<input
-										style={{fontSize: "large"}}
-										type="text"
-										name="filename"
-										class="form-control"
-										placeholder="Enter File Name to save"
-										readonly
-									/><br/>
+									<label style={{fontSize: "large"}}>{fileName}</label><br/>
 									<span class="input-group-btn">
 										<div class="btn btn-default  custom-file-uploader">
 											<p></p>
-											< input style = {{font: "inherit"}}
+											<input style = {{font: "inherit"}}
 												type="file"
 												name="file"
-												onchange="this.form.filename.value = this.files.length ? this.files[0].name : ''"
+												value={file}
+												onChange={e=>onChange(e)}
 											/>
 										</div><br/>
-										< input className = "btn btn-primary"
+										<input className = "btn btn-primary"
 										type = "submit"
-										value = "Submit" / >
+										value = "Submit" />
 									</span>
 								</div>
 							</div>

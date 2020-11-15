@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React,{useState} from "react";
+=======
+import React, {useState} from "react";
+>>>>>>> 87bd44fef8c63f9ba745367e7b888b8b13a32edf
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {useHistory} from "react-router-dom";

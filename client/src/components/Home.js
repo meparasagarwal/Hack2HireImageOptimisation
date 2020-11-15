@@ -1,6 +1,6 @@
 import React, { Fragment,useState } from "react";
 import {useEffect} from "react";
-import {useHistory} from "react-router-dom";
+/*import {useHistory} from "react-router-dom";*/
 import axios from "axios";
 
 function Home() {
@@ -46,15 +46,16 @@ function Home() {
 		  }
 		}
 	  };
-	let history = useHistory();
+	/*let history = useHistory();
 	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 400){
 				history.push("/login")
+
 			}
 		})
-	});
+	});*/
 	return (
 		<Fragment>
 		<center>

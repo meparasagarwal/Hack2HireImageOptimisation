@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
-
+import Header from "./Header";
 
 function Login(){
           const [formData,setFormData]=useState({
@@ -33,6 +33,7 @@ function Login(){
           }
         return (
                   <section className = "landing" >
+                  <Header></Header>
                   <div className = "dark-overlay" >
                   <div className = "landing-inner" >
                   <section className="container">

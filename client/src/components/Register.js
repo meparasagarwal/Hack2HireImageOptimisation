@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
+import Header from "./Header";
 
 
 
@@ -37,7 +38,9 @@ function Register(){
   };
 
     return (
+      
           <section className = "landing" >
+          <Header></Header>
           <div className = "dark-overlay" >
           <div className = "landing-inner" >
           <section className="container">

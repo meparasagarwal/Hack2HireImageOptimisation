@@ -11,7 +11,6 @@ function App() {
     return (
         <Router>
         <Fragment>
-        <Header></Header>
         <section>
         <Switch>
         <Route exact path = "/"component = {Register }/>   

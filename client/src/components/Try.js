@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import {Link} from "react-router-dom";
+
 import {useHistory} from "react-router-dom";
 import {useEffect} from "react";
 import Message from './Message';
@@ -72,6 +74,15 @@ const Try = () => {
 
   return (
     <Fragment>
+    <nav className= "navbar bg-dark">
+        <h1 className="text-primary" style={{fontSize:"40px"}}> Image Compressor
+        </h1>
+        <ul>
+        <li >
+        <Link to = "/login" style={{fontSize:"25px"}}>Logout</Link> 
+        </li>
+        </ul>
+        </nav>
 		<center>
 			<div class="upload">
 				<header class="page-header">

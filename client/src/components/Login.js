@@ -2,14 +2,11 @@ import React,{useState} from "react";
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import Header from "./Header";
-import {useEffect} from "react";
+import axios from "axios";
 
 function Login(){
   //let history2 = useHistory();
-  useEffect(() => {
-    fetch("/login")
-      .then((response) => {})
-  });
+  
           const [formData,setFormData]=useState({
             email:"",
             password:"",
@@ -21,21 +18,17 @@ function Login(){
         
           const onSubmit=async e => {
             e.preventDefault();
-            const formData={email,password};
-            const response=await fetch("/login",{
-              method:"POST",
-              headers:{
-              "Content-Type":"application/json"
-              },
-              body:JSON.stringify(formData)
-            });
-            if(response.ok){
-              console.log("Response Worked");
-              history.push("/home");
-            }
-            else{
-              alert("Invalid credentials");
-            }
+            await axios.post("/login",{
+              email:email,
+              password:password
+            }).then((response)=>{history.push("/home");})
+            .catch(err=>{
+              if(err.response){
+                alert("Invalid credentials");
+              }else{
+                console.log(err);
+              }
+            })
           }
         return (
                   <section className = "landing" >

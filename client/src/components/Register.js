@@ -1,7 +1,9 @@
-import React,{useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
+import axios from "axios";
 import {useHistory} from "react-router-dom";
 import Header from "./Header";
+import {Redirect} from "react-router-dom";
 
 
 
@@ -23,7 +25,7 @@ function Register(){
       alert("Passwords don't match",'danger');
     }else{
       const formData={name,email,password};
-      const response=await fetch("/register",{
+      /*const response=await fetch("/register",{
         method:"POST",
         headers:{
         "Content-Type":"application/json"
@@ -33,6 +35,15 @@ function Register(){
       if(response.ok){
         console.log("Response Worked");
         history.push("/home");
+      }*/
+      const response=await axios.post("/register",{
+        name:name,
+        email:email,
+        password:password
+      });
+      if(response.ok){
+        console.log("Response worked");
+        <Redirect to="/home" />
       }
     }
   };

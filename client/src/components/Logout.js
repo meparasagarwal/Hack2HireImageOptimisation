@@ -10,7 +10,7 @@ function Logout(){
 			if (response.status === 201){
 				history.push("/login")
 			}else{
-                console.log(respose);
+                console.log(response);
             }
 		})
     });

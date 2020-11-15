@@ -8,7 +8,7 @@ function Login(){
   useEffect(()=>{
 		fetch("/login")
 		.then((response)=>{
-			if (response.status === 400){
+			if (response.status === 201){
 				console.log("Logged in succesfully");
 			}
 		})

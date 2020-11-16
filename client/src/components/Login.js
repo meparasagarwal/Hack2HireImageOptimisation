@@ -10,7 +10,6 @@ function Login(){
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 201){
-<<<<<<< HEAD
         history.push("/home");
       }
     })
@@ -19,21 +18,6 @@ function Login(){
     email:"",
     password:"",
   });
-=======
-				console.log("logged out")
-			}else{
-        console.log(response);
-      }
-				console.log("Logged in succesfully");
-			}
-		})
-  },[])*/
-    const [formData,setFormData]=useState({
-            email:"",
-            password:"",
-          });
-         
->>>>>>> ad3bee5950301723eb819311f3b0a19aaae67d4a
           const {email,password}=formData;
           const onChange=e=>
           setFormData({...formData,[e.target.name]:e.target.value});

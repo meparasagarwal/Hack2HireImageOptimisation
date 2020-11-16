@@ -6,17 +6,25 @@ function Images(){
         fetch("/images")
         .then((response)=>{
             if(response){
-                images=response.data.image
+                //images=response.data.image
                 console.log(response.data);
             }
         })
-    })
+    });
+    function renderImages(){
+        if(images.length()>0){
+            images.map(image=>{
+                return <image src={image} />
+            })
+        }
+        else{
+            return <div></div>
+        }
+    };
     return(
         <div class="gallery">
-        {images.map=(image=>{
-            <img src={img} alt="avatar_photo"/>
-        })}
-			</div>
+        {renderImages}
+		</div>
     );
 }
 

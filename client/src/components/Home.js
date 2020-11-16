@@ -7,14 +7,14 @@ import {Redirect} from "react-router-dom";
 
 function Home() {
 	let history = useHistory();
-	/*useEffect(()=>{
+	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 400){
 				history.push("/login")
 			}
 		})
-	},[]);*/
+	},[]);
 	const onClick=async e=>{
 		e.preventDefault();
 		await axios.get("/Login")

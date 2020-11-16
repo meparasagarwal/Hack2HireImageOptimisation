@@ -13,7 +13,7 @@ function Login(){
         history.push("/home");
       }
     })
-  },[]);
+  });
   const [formData,setFormData]=useState({
     email:"",
     password:"",

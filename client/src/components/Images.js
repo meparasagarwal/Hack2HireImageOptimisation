@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {useHistory} from "react-router-dom";
 
 function Images(){
     let history=useHistory();
-    let images=[];
+    const [images,setImages]=useState([]);
     useEffect(()=>{
         fetch("/images")
         .then((response)=>{

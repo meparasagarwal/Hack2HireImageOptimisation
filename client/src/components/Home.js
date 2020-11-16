@@ -6,6 +6,7 @@ import axios from "axios";
 import Images from "./Images";
 
 function Home() {
+	const [imageURL,setImageURL]=useState();
 	let history = useHistory();
 	useEffect(()=>{
 		fetch("/home")
@@ -25,31 +26,29 @@ function Home() {
 		.then(response=>{history.push("/Login");
 		})};
 	
-  const [formData, setFormData] = useState({
-	  file:null,
-	  fileName:''
-  })
-  const {file,fileName}=formData;
-	const onChange=e=>
-	setFormData({...formData,[e.target.name]:e.target.value});
-
-	const onSubmit=e =>{
-		let formData2=new FormData();
-		formData2.append('file',file);
-		formData2.append('fileName',fileName);
-		console.log("hii")
-		/*const config = {     
+  const [file,setFile]=useState();
+  const [fileName,setFileName]=useState();
+	function onChange1(event){
+		setFile(event.target.files[0]);
+	}
+	function onChange2(event){
+		setFileName(event.target.value);
+	}
+	const onSubmit=async e =>{
+		e.preventDefault();
+		let data=new FormData();
+		data.append('file',file);
+		data.append('file',fileName);
+		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
 		}
-		await axios.post("/upload",formData2,config)
+		await axios.post("/Upload",data,config)
 		.then(response=>{
-			if(response.status === 201){
-				console.log("Succes");
-			}else{
-				console.log(response);
-			}
-		})*/
-	}
+			console.log(response);
+		}).catch(err=>{
+				console.log(err);
+			})
+		}
 
 	return (
 		<Fragment>
@@ -63,27 +62,25 @@ function Home() {
         </ul>
         </nav>
 		<center>
-			<div class="upload">
-				<header class="page-header">
+			<div className="upload">
+				<header className="page-header">
 					<h4> </h4>
 					<h1>Upload Image</h1>
 				</header>
 
 				<form  autoComplete="off" onSubmit={e=>onSubmit(e)}>
-					<div class="row">
-						<div class="col-sm-7 col-md-6 col-lg-5">
-							<div class="form-group">
-							<input type="text" name="fileName" onChange={e=>onChange(e)}/>
-							<br></br>
-							<label>{fileName}</label>
-								<div class="input-group">
+					<div className="row">
+						<div className="col-sm-7 col-md-6 col-lg-5">
+							<div className="form-group">
+								<div className="input-group">
 									<label style={{fontSize: "large"}}></label><br/>
-									<span class="input-group-btn">
-										<div class="btn btn-default  custom-file-uploader">
+									<span className="input-group-btn">
+										<div className="btn btn-default  custom-file-uploader">
 											<p></p>
+											<input type="text" name="fileName" onChange={e=>onChange2(e)} />
 											<input style = {{font: "inherit"}}
 												type="file"
-												onChange={e=>onChange(e)}
+												onChange={e=>onChange1(e)}
 												name="file"
 											/>
 										</div><br/>
@@ -100,7 +97,7 @@ function Home() {
 		</center>
 			<br /> <br /> <br /> <br /> <br />
 			<center>
-				<h1>IMAGE GALLERY</h1>
+			<h1>IMAGE GALLERY</h1>
 			</center>
 			<Images />
 		</Fragment>

@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
+import {useHistory} from "react-router-dom";
 
 function Images(){
+    let history=useHistory();
     let images=[];
     useEffect(()=>{
         fetch("/images")
         .then((response)=>{
-            if(response){
-                //images=response.data.image
+            if(response.data){
+                images=response.data.image
                 console.log(response.data);
+            }else if(response.status===400){
+             history.push("/login");   
             }
         })
     });

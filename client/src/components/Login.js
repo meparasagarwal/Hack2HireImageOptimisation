@@ -10,15 +10,12 @@ function Login(){
 		fetch("/login")
 		.then((response)=>{
 			if (response.status === 201){
-<<<<<<< HEAD
 				console.log("logged out")
 			}else{
         console.log(response);
       }
-=======
 				console.log("Logged in succesfully");
 			}
->>>>>>> b4238044e72fdeea4a162263be7019c1e008b593
 		})
   },[])*/
     const [formData,setFormData]=useState({

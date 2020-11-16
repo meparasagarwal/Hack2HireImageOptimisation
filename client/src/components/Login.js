@@ -6,26 +6,18 @@ import axios from "axios";
 
 function Login(){
   let history = useHistory();
-	/*useEffect(()=>{
-		fetch("/login")
+	useEffect(()=>{
+		fetch("/home")
 		.then((response)=>{
 			if (response.status === 201){
-<<<<<<< HEAD
-				console.log("logged out")
-			}else{
-        console.log(response);
+        history.push("/home");
       }
-=======
-				console.log("Logged in succesfully");
-			}
->>>>>>> b4238044e72fdeea4a162263be7019c1e008b593
-		})
-  },[])*/
-    const [formData,setFormData]=useState({
-            email:"",
-            password:"",
-          });
-         
+    })
+  },[]);
+  const [formData,setFormData]=useState({
+    email:"",
+    password:"",
+  });
           const {email,password}=formData;
           const onChange=e=>
           setFormData({...formData,[e.target.name]:e.target.value});
@@ -35,9 +27,7 @@ function Login(){
             await axios.post("/Login",{
               email:email,
               password:password
-            }).then((response)=>{axios.get("/home")
-            .then(res=>{history.push("/home")})
-            .catch(err=>{console.log(err)})})
+            }).then((response)=>{history.push("/home")})
             .catch(err=>{
               if(err.response){
                 alert("Invalid credentials");

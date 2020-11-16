@@ -11,6 +11,7 @@ function Home() {
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 400){
+<<<<<<< HEAD
 				history.push("/Login")
 			}else if(response.status === 201){
 				axios.get("/mages")
@@ -20,6 +21,12 @@ function Home() {
 				})
 			}})
 	});
+=======
+				history.push("/login")
+			}
+		})
+	},[]);
+>>>>>>> ad3bee5950301723eb819311f3b0a19aaae67d4a
 	const onClick=async e=>{
 		e.preventDefault();
 		await axios.get("/Login")

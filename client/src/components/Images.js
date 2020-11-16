@@ -16,9 +16,9 @@ function Images(){
         })
     });
     function renderImages(){
-        if(images.length()>0){
+        if(images.length>0){
             images.map(image=>{
-                return <image src={image} />
+                return <image src={image} alt="avatar-image" />
             })
         }
         else{
@@ -27,7 +27,7 @@ function Images(){
     };
     return(
         <div class="gallery">
-        {renderImages}
+        {renderImages()}
 		</div>
     );
 }

@@ -5,29 +5,34 @@ import Header from "./Header";
 import axios from "axios";
 
 function Login(){
-  useEffect(()=>{
+  let history = useHistory();
+	/*useEffect(()=>{
 		fetch("/login")
 		.then((response)=>{
-			if (response.status === 400){
-				console.log("Logged in succesfully");
-			}
+			if (response.status === 201){
+				console.log("logged out")
+			}else{
+        console.log(response);
+      }
 		})
-    });
-          const [formData,setFormData]=useState({
+  },[])*/
+    const [formData,setFormData]=useState({
             email:"",
             password:"",
           });
-          const history=useHistory();
+         
           const {email,password}=formData;
           const onChange=e=>
           setFormData({...formData,[e.target.name]:e.target.value});
         
           const onSubmit=async e => {
             e.preventDefault();
-            await axios.post("/login",{
+            await axios.post("/Login",{
               email:email,
               password:password
-            }).then((response)=>{history.push("/home");})
+            }).then((response)=>{axios.get("/home")
+            .then(res=>{history.push("/home")})
+            .catch(err=>{console.log(err)})})
             .catch(err=>{
               if(err.response){
                 alert("Invalid credentials");

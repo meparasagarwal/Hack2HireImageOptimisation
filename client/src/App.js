@@ -11,15 +11,9 @@ function App() {
         <Fragment>
         <section>
         <Switch>
-        <Route exact path = "/"component = {Register }/>   
-        <Route exact path = "/login"
-        component = {
-            Login
-        }/>   
-        <Route exact path = "/home"
-        component = {
-            Home
-        }/>  
+        <Route exact path = "/" component = {Register }/>   
+        <Route exact path = "/Login" component = {Login}/>
+        <Route exact path = "/home" component = {Home}/> 
         </Switch>
         </section>   
         </Fragment>   

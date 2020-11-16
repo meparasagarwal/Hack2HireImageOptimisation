@@ -2,25 +2,39 @@ import React, { Fragment,useState } from "react";
 import {Link} from "react-router-dom";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
+import axios from "axios";
+import {Redirect} from "react-router-dom"; 
 
 function Home() {
 	let history = useHistory();
-	useEffect(()=>{
+	/*useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 400){
 				history.push("/login")
 			}
 		})
-    });
+	},[]);*/
+	const onClick=async e=>{
+		e.preventDefault();
+		await axios.get("/Login")
+		.then(response=>{
+			if(response.status===203){
+				history.push("/Login");
+				console.log("Logged out successfully");
+			}else{
+				console.log(response);
+			}
+		})
+	}
 	return (
 		<Fragment>
 		<nav className= "navbar bg-dark">
         <h1 className="text-primary" style={{fontSize:"40px"}}> Image Compressor
         </h1>
         <ul>
-        <li >
-        <Link to = "/login" style={{fontSize:"25px"}}>Logout</Link> 
+		<li >
+		<Link onClick={e=>onClick(e)} style={{fontSize:"25px"}}>Logout</Link>
         </li>
         </ul>
         </nav>

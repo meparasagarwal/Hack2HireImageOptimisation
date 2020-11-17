@@ -632,6 +632,7 @@ button {
 
 .gallery .gallery2 img {
     width:30%;
+    height:200px;
     float: left;
     margin: 1.66%;
 }

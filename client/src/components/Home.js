@@ -3,11 +3,12 @@ import {Link} from "react-router-dom";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
-
+import {useCallback} from 'react';
+import {useDropzone} from 'react-dropzone';
+ 
 function Home() {
-	let [images,setImages]=useState([]);
+  let [images,setImages]=useState([]);
 	let [uploadedImage,setUploadedImage]=useState([]);
-	//const [imageURL,setImageURL]=useState();
 	let history = useHistory();
 	useEffect(()=>{
 		fetch("/home")
@@ -25,25 +26,27 @@ function Home() {
 		await axios.get("/Login")
 		.then(response=>{history.push("/Login");
 		})};
-	
-  const [file,setFile]=useState();
-  const [fileName,setFileName]=useState();
-	function onChange1(event){
-		setFile(event.target.files[0]);
-	}
-	function onChange2(event){
-		setFileName(event.target.value);
-	}
+
+
+  let file;
+  const onDrop =useCallback((acceptedFile) => {
+    console.log(acceptedFile);
+    acceptedFile.map(file1=>{
+		file=file1;
+	})
+  }, [])
+    const {getRootProps, getInputProps} = useDropzone({onDrop})
 	const onSubmit=async e =>{
 		e.preventDefault();
 		let data=new FormData();
 		data.append('file',file);
-		data.append('file',fileName);
+		data.append('fileName',"Hello");
 		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
 		}
 		await axios.post("/Upload",data,config)
 		.then(response=>{
+			console.log(response);
 			setUploadedImage(response.data);
 		}).catch(err=>{
 				console.log(err);
@@ -73,9 +76,12 @@ function Home() {
 			}
 			return temp;
 		};
+  
+ 
 
-	return (
-		<Fragment>
+  return (
+
+    <Fragment>
 		<nav className= "navbar bg-dark">
         <h1 className="text-primary" style={{fontSize:"40px"}}> Image Compressor
         </h1>
@@ -96,24 +102,14 @@ function Home() {
 					<div className="row">
 						<div className="col-sm-7 col-md-6 col-lg-5">
 							<div className="form-group">
-								<div className="input-group">
-									<label style={{fontSize: "large"}}></label><br/>
-									<span className="input-group-btn">
-										<div className="btn btn-default  custom-file-uploader">
-											<p></p>
-											<input type="text" name="fileName" onChange={e=>onChange2(e)} />
-											<br />
-											<input style = {{font: "inherit"}}
-												type="file"
-												onChange={e=>onChange1(e)}
-												name="file"
-											/>
-										</div><br/>
-										<input className = "btn btn-primary"
+							<div {...getRootProps()}>
+      <input {...getInputProps()} />
+      <p>Drag 'n' drop some files here, or click to select files</p>
+    </div>
+	
+                        <input className = "btn btn-primary"
 										type = "submit"
 										value = "Submit" />
-									</span>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -138,7 +134,10 @@ function Home() {
 			</div>
 			</center>
 		</Fragment>
-	);
+
+  )
 }
+
+
 
 export default Home;

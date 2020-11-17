@@ -115,6 +115,7 @@ function Home() {
 			<h1>IMAGE GALLERY</h1>
 			<div class="gallery">
 			{renderImages()}
+			<div>Download</div>
 			</div>
 			</center>
 		</Fragment>

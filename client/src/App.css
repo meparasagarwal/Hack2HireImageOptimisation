@@ -649,7 +649,7 @@ button {
     opacity 0.5s linear;
 }
 
-.gallery img:hover{
+.gallery img:hover div{
     width: 150px;
     padding: 8px 15px;
     visibility: visible;

@@ -5,6 +5,7 @@ import {useHistory} from "react-router-dom";
 import axios from "axios";
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
+let files;
  
 function Home() {
   let [images,setImages]=useState([]);
@@ -28,27 +29,23 @@ function Home() {
 		})};
 
 
-  let file;
   const onDrop =useCallback((acceptedFile) => {
-    console.log(acceptedFile);
-    acceptedFile.map(file1=>{
-		file=file1;
+    acceptedFile.map(file=>{
+		files=file;
 	})
-  }, [])
-    const {getRootProps, getInputProps} = useDropzone({onDrop})
-
+  },[])
+ const {getRootProps, getInputProps} = useDropzone({onDrop})
 	const onSubmit=async e =>{
 		e.preventDefault();
 		let data=new FormData();
-		data.append('file',file);
-		console.log(data);
+		console.log(files);
+		data.append('file',files);
 		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
 		}
 		await axios.post("/Upload",data,config)
 		.then(response=>{
 			console.log(response);
-			setUploadedImage(response.data);
 		}).catch(err=>{
 				console.log(err);
 			})
@@ -105,10 +102,9 @@ function Home() {
 						<div className="col-sm-7 col-md-6 col-lg-5">
 							<div className="form-group">
 							<div {...getRootProps()}>
-      <input {...getInputProps()} />
-      <p>Drag 'n' drop some files here, or click to select files</p>
-    </div>
-	
+                                 <input {...getInputProps()} />
+                                    <p>Drag 'n' drop a file here!</p>
+                                        </div>
                         <input className = "btn btn-primary"
 										type = "submit"
 										value = "Submit" />

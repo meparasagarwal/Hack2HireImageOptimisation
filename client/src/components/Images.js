@@ -5,11 +5,11 @@ function Images(){
     let history=useHistory();
     const [images,setImages]=useState([]);
     useEffect(()=>{
-        fetch("/images")
+        fetch("/Images")
         .then((response)=>{
-            if(response.data){
-                images=response.data.image
-                console.log(response.data);
+            if(response){
+                //images=response.data.image
+                console.log(response);
             }else if(response.status===400){
              history.push("/login");   
             }

@@ -34,6 +34,7 @@ function Home() {
     acceptedFile.map(file=>{
 		files=file;
 	})
+	fileName=files.Name;
   },[]);
 
  const {getRootProps, getInputProps} = useDropzone({onDrop});
@@ -41,8 +42,6 @@ function Home() {
 	const onSubmit=async e =>{
 		e.preventDefault();
 		let data=new FormData();
-		console.log(files);
-		fileName=files.name;
 		data.append('file',files);
 		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
@@ -109,13 +108,17 @@ function Home() {
 						<div className="col-sm-7 col-md-6 col-lg-5">
 							<div className="form-group">
 							<div {...getRootProps()}>
-                                 <input {...getInputProps()} />
-                                    <p>Drag 'n' drop a file here!</p>
+                                 <input {...getInputProps({onChange:event=>{fileName=event.target.files[0].name+" is selected"}})} />
+                                    <p>Click here to upload a file or Drag n drop a file</p>
                                         </div>
-										<p>{fileName}</p>
+							<div><p><b>{fileName}</b></p></div>
+							<br />
                         <input className = "btn btn-primary"
 										type = "submit"
 										value = "Submit" />
+						<input className = "btn btn-primary"
+										type = "submit"
+										value = "Resize" />
 							</div>
 						</div>
 					</div>
@@ -123,14 +126,6 @@ function Home() {
 			</div>
 		</center>
 			<br /> <br /> <br /> 
-			<center>
-			<h1 style={{fontSize:"35px"}}>Preview of Uploaded Image</h1>
-			<div class="gallery">
-			<center>
-			{renderUploadedImages()}
-			</center>
-			</div>
-			</center>
 			<br /> <br />
 			<center>
 			<h1 style={{fontSize:"35px"}}>IMAGE GALLERY</h1>

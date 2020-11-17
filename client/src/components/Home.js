@@ -3,22 +3,20 @@ import {Link} from "react-router-dom";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
 import axios from "axios";
-import Images from "./Images";
 
 function Home() {
-	const [imageURL,setImageURL]=useState();
+	//const [imageURL,setImageURL]=useState();
 	let history = useHistory();
 	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
 			if (response.status === 400){
 				history.push("/Login")
-			}/*else if(response.status === 201){
-				axios.get("/images")
+			}else if(response.status === 201){
+				axios.get("/Images")
 				.then((response)=>{
-					//images=response.data.images;
 					console.log(response);
-				}*/
+				})}
 			})});
 	const onClick=async e=>{
 		e.preventDefault();
@@ -99,7 +97,6 @@ function Home() {
 			<center>
 			<h1>IMAGE GALLERY</h1>
 			</center>
-			<Images />
 		</Fragment>
 	);
 }

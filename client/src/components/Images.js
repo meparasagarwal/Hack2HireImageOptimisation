@@ -3,17 +3,16 @@ import {useHistory} from "react-router-dom";
 
 function Images(){
     let history=useHistory();
-    const [images,setImages]=useState([]);
+    let [images,setImages]=useState([]);
     useEffect(()=>{
-        fetch("/images")
+        fetch("/Images")
         .then((response)=>{
-            if(response.data){
-                images=response.data.image
-                console.log(response.data);
+            if(response){
+                console.log(response);
             }else if(response.status===400){
              history.push("/login");   
             }
-        })
+        },[])
     });
     function renderImages(){
         if(images.length>0){

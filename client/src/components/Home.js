@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Home() {
 	let [images,setImages]=useState([]);
+	let [uploadedImage,setUploadedImage]=useState([]);
 	//const [imageURL,setImageURL]=useState();
 	let history = useHistory();
 	useEffect(()=>{
@@ -43,19 +44,27 @@ function Home() {
 		}
 		await axios.post("/Upload",data,config)
 		.then(response=>{
-			console.log(response);
+			setUploadedImage(response.data);
 		}).catch(err=>{
 				console.log(err);
 			})
 		}
 
+        function renderUploadedImages(){
+			let temp;
+			if(uploadedImage.length>0){
+				temp=<img src={uploadedImage} />
+			}else{
+				temp=<div />
+			}
+			return temp;
+		}
 		function renderImages(){
-			console.log(images.length);
 			let temp=[];
 			let i=0;
 			if(images.length > 0){
 				images.map(image=>{
-					temp[i]=<img src={image} alt="avatar_photo"/>
+					temp[i]=<a href={image}><img src={image} alt="avatar_photo"/></a>
 					i=i+1;
 				})
 			}
@@ -110,7 +119,14 @@ function Home() {
 				</form>
 			</div>
 		</center>
-			<br /> <br /> <br /> <br /> <br />
+			<br /> <br /> <br /> 
+			<center>
+			<h1>Preview of Uploaded Image</h1>
+			<div class="gallery">
+			{renderUploadedImages()}
+			</div>
+			</center>
+			<br /> <br />
 			<center>
 			<h1>IMAGE GALLERY</h1>
 			<div class="gallery">

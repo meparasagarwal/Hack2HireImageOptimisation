@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Images from "./components/Images";
 import Try from "./components/Try";
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
+import Message from "./components/Message";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
         <Route exact path = "/home" component = {Home}/> 
         <Route exact path = "/images" component = {Images}/> 
         <Route exact path = "/try" component = {Try}/> 
+        <Route exact path = "/try" component = {Images}/> 
         </Switch>
         </section>   
         </Fragment>   

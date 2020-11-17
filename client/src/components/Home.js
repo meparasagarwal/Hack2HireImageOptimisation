@@ -53,7 +53,7 @@ function Home() {
         function renderUploadedImages(){
 			let temp;
 			if(uploadedImage.length>0){
-				temp=<img src={uploadedImage} />
+				temp=<div class="gallery3"><img src={uploadedImage} /></div>
 			}else{
 				temp=<div />
 			}
@@ -64,8 +64,8 @@ function Home() {
 			let i=0;
 			if(images.length > 0){
 				images.map(image=>{
-					temp[i]=<a href={image}><img src={image} alt="avatar_photo"/></a>
-					i=i+1;
+					temp[i]=<div class="gallery2"><a href={image}><img src={image} /></a></div>
+					i=i+1
 				})
 			}
 			else{
@@ -102,6 +102,7 @@ function Home() {
 										<div className="btn btn-default  custom-file-uploader">
 											<p></p>
 											<input type="text" name="fileName" onChange={e=>onChange2(e)} />
+											<br />
 											<input style = {{font: "inherit"}}
 												type="file"
 												onChange={e=>onChange1(e)}
@@ -121,17 +122,19 @@ function Home() {
 		</center>
 			<br /> <br /> <br /> 
 			<center>
-			<h1>Preview of Uploaded Image</h1>
+			<h1 style={{fontSize:"35px"}}>Preview of Uploaded Image</h1>
 			<div class="gallery">
+			<center>
 			{renderUploadedImages()}
+			</center>
 			</div>
 			</center>
 			<br /> <br />
 			<center>
-			<h1>IMAGE GALLERY</h1>
+			<h1 style={{fontSize:"35px"}}>IMAGE GALLERY</h1>
+			<p>Click on the image to download</p>
 			<div class="gallery">
 			{renderImages()}
-			<div>Download</div>
 			</div>
 			</center>
 		</Fragment>

@@ -6,6 +6,7 @@ import axios from "axios";
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
 let files;
+let fileName='';
  
 function Home() {
   let [images,setImages]=useState([]);
@@ -41,6 +42,7 @@ function Home() {
 		e.preventDefault();
 		let data=new FormData();
 		console.log(files);
+		fileName=files.name;
 		data.append('file',files);
 		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
@@ -110,6 +112,7 @@ function Home() {
                                  <input {...getInputProps()} />
                                     <p>Drag 'n' drop a file here!</p>
                                         </div>
+										<p>{fileName}</p>
                         <input className = "btn btn-primary"
 										type = "submit"
 										value = "Submit" />

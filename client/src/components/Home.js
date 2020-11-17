@@ -5,6 +5,7 @@ import {useHistory} from "react-router-dom";
 import axios from "axios";
 
 function Home() {
+	let [images,setImages]=useState([]);
 	//const [imageURL,setImageURL]=useState();
 	let history = useHistory();
 	useEffect(()=>{
@@ -15,9 +16,9 @@ function Home() {
 			}else if(response.status === 201){
 				axios.get("/Images")
 				.then((response)=>{
-					console.log(response);
+					setImages(response.data.image);
 				})}
-			})});
+			})},[]);
 	const onClick=async e=>{
 		e.preventDefault();
 		await axios.get("/Login")
@@ -47,6 +48,22 @@ function Home() {
 				console.log(err);
 			})
 		}
+
+		function renderImages(){
+			console.log(images.length);
+			let temp=[];
+			let i=0;
+			if(images.length > 0){
+				images.map(image=>{
+					temp[i]=<img src={image} alt="avatar_photo"/>
+					i=i+1;
+				})
+			}
+			else{
+				temp[0]=<div />
+			}
+			return temp;
+		};
 
 	return (
 		<Fragment>
@@ -96,6 +113,9 @@ function Home() {
 			<br /> <br /> <br /> <br /> <br />
 			<center>
 			<h1>IMAGE GALLERY</h1>
+			<div class="gallery">
+			{renderImages()}
+			</div>
 			</center>
 		</Fragment>
 	);

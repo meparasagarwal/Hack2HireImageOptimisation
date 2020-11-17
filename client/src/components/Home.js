@@ -5,13 +5,18 @@ import {useHistory} from "react-router-dom";
 import axios from "axios";
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
+import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
+import Resize from "./Resize"
 let files;
 let fileName='';
+let result='';
  
 function Home() {
   let [images,setImages]=useState([]);
 	let [uploadedImage,setUploadedImage]=useState([]);
+	let [button,setButton]=useState((""));
 	let history = useHistory();
+	let history1=useHistory();
 	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
@@ -34,7 +39,6 @@ function Home() {
     acceptedFile.map(file=>{
 		files=file;
 	})
-	fileName=files.Name;
   },[]);
 
  const {getRootProps, getInputProps} = useDropzone({onDrop});
@@ -46,6 +50,7 @@ function Home() {
 		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
 		}
+		if(button=="Submit"){
 		await axios.post("/Upload",data,config)
 		.then(response=>{
 			axios.get("/Images")
@@ -55,6 +60,16 @@ function Home() {
 		}).catch(err=>{
 				console.log(err);
 			})
+		}
+		else{
+			await axios.post("/Resize",data,config)
+			.then(response=>{
+				history.push({
+					pathname:'/Resize',
+					fileName:fileName,
+				});		
+				})
+		}
 		}
 
         function renderUploadedImages(){
@@ -108,17 +123,19 @@ function Home() {
 						<div className="col-sm-7 col-md-6 col-lg-5">
 							<div className="form-group">
 							<div {...getRootProps()}>
-                                 <input {...getInputProps({onChange:event=>{fileName=event.target.files[0].name+" is selected"}})} />
+                                 <input {...getInputProps({onChange:event=>{fileName=event.target.files[0].name;result=fileName+" is selected"}})} />
                                     <p>Click here to upload a file or Drag n drop a file</p>
                                         </div>
-							<div><p><b>{fileName}</b></p></div>
+							<div><p><b>{result}</b></p></div>
 							<br />
                         <input className = "btn btn-primary"
 										type = "submit"
-										value = "Submit" />
+										value = "Submit"
+										onClick={e=>{setButton("Submit")}} />
 						<input className = "btn btn-primary"
 										type = "submit"
-										value = "Resize" />
+										value = "Resize"
+										onClick={e=>{setButton("Resize")}} />
 							</div>
 						</div>
 					</div>

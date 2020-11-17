@@ -83,7 +83,7 @@ function Home() {
 
     <Fragment>
 		<nav className= "navbar bg-dark">
-        <h1 className="text-primary" style={{fontSize:"40px"}}> Image Compressor
+        <h1 className="text-primary" style={{fontSize:"40px"}}>Dell Image Store
         </h1>
         <ul>
 		<li >

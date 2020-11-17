@@ -14,6 +14,8 @@ function Register(){
     password:"",
     password2:"",
   });
+  let [alertMessage,setAlertMessage]=useState("");
+  let [className,setClassName]=useState("");
   let history=useHistory();
   const {name,email,password,password2}=formData;
   const onChange=e=>
@@ -24,18 +26,6 @@ function Register(){
     if(password !== password2){
       alert("Passwords don't match",'danger');
     }else{
-      //const formData={name,email,password};
-      /*const response=await fetch("/register",{
-        method:"POST",
-        headers:{
-        "Content-Type":"application/json"
-        },
-        body:JSON.stringify(formData)
-      });
-      if(response.ok){
-        console.log("Response Worked");
-        history.push("/home");
-      }*/
      await axios.post("/register",{
         name:name,
         email:email,
@@ -43,7 +33,8 @@ function Register(){
       }).then((response)=>{history.push("/home");})
       .catch(err=>{
         if(err.response){
-          alert("Email already registered");
+          setAlertMessage("Email already registered");
+          setClassName("alert alert-danger");
         }else{
           console.log(err);
         }
@@ -60,6 +51,7 @@ function Register(){
           <h1 className="large text-primary" style={{color:"whitesmoke"}}>Want to Compress Images?</h1>
             <h1 className="large text-primary">Register</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+            <div className={className}>{alertMessage}</div>
             <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
               <div className="form-group">
                 <input type="text" placeholder="Name" name="name" value={name} onChange={e=>onChange(e)} required />

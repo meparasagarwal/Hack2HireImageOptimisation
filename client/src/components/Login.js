@@ -6,6 +6,8 @@ import axios from "axios";
 
 function Login(){
   let history = useHistory();
+  let [alertMessage,setAlertMessage]=useState("");
+  let [className,setClassName]=useState("");
 	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
@@ -30,7 +32,8 @@ function Login(){
             }).then((response)=>{history.push("/home")})
             .catch(err=>{
               if(err.response){
-                alert("Invalid credentials");
+                 setAlertMessage("Invalid credentials");
+          setClassName("alert alert-danger");
               }else{
                 console.log(err);
               }
@@ -45,6 +48,7 @@ function Login(){
                   <h1 className="large text-primary" style={{color:"whitesmoke"}}>Login and Compress Images</h1>
                     <h1 className="large text-primary">Login</h1>
                     <p className="lead"><i className="fas fa-user"></i>Login to your Account</p>
+                    <div className={className}>{alertMessage}</div>
                     <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
                       <div className="form-group">
                         <input type="email" placeholder="Email Address" name="email"  value={email} onChange={e=>onChange(e)} />

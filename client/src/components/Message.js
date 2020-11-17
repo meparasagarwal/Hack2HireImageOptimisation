@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
-import React, { Fragment,useState} from "react";
+import React, {Fragment,useState} from "react";
 import {Link} from "react-router-dom";
 import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
@@ -144,4 +142,3 @@ function Message() {
 }
 
 export default Message;
->>>>>>> 9b46ad04a20d4a7f8e9030a943d2367f97ade518

@@ -378,6 +378,7 @@ button {
 .landing {
     position:relative;
     height: 100vh;
+    background:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9TtjLL8QBhvWWTTJYeyI8Vcg67n0NsXvt6Q&usqp=CAU") no-repeat center center/cover;
 }
 
 .landing-inner {

@@ -68,6 +68,9 @@ function Login(){
                     <p className="my-1">
                       Already have an account? <Link to="/">Register</Link>
                     </p>
+                     <p className="my-1">
+                      <Link to="/forgotpw">Forgot password?</Link>
+                    </p>
                   </section>
                   </div>
                   </div>

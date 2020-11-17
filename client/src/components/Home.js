@@ -41,12 +41,7 @@ function Home() {
 		e.preventDefault();
 		let data=new FormData();
 		data.append('file',file);
-<<<<<<< HEAD
-		data.append('fileName',"Hello");
-		console.log(data)
-=======
 		console.log(data);
->>>>>>> 02253e3d39dbdf6e9dcaf08246b711f165812c72
 		const config = {     
 			headers: { 'content-type': 'multipart/form-data' }
 		}

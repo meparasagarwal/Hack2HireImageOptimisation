@@ -47,7 +47,7 @@ function Home() {
 		}
 		await axios.post("/Upload",data,config)
 		.then(response=>{
-			axios.get("/images")
+			axios.get("/Images")
 			.then(response=>{
 				setImages(response.data.image);
 			})

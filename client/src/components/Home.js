@@ -33,8 +33,10 @@ function Home() {
     acceptedFile.map(file=>{
 		files=file;
 	})
-  },[])
- const {getRootProps, getInputProps} = useDropzone({onDrop})
+  },[]);
+
+ const {getRootProps, getInputProps} = useDropzone({onDrop});
+
 	const onSubmit=async e =>{
 		e.preventDefault();
 		let data=new FormData();
@@ -45,7 +47,10 @@ function Home() {
 		}
 		await axios.post("/Upload",data,config)
 		.then(response=>{
-			console.log(response);
+			axios.get("/Images")
+			.then(response=>{
+				setImages(response.data.image);
+			})
 		}).catch(err=>{
 				console.log(err);
 			})

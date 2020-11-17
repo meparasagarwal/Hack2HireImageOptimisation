@@ -622,18 +622,18 @@ button {
     margin-top: 12%;
 }
 
-.gallery img:hover {
+.gallery .gallery2 img:hover {
     opacity: 0.7;
     cursor: pointer;
 }
 
-.gallery img {
+.gallery .gallery2 img {
     width: 30%;
     float: left;
     margin: 1.66%;
 }
 
-.gallery div{
+.gallery .gallery2 div{
     position: absolute;
     bottom: 0;
     right: 0;
@@ -649,7 +649,7 @@ button {
     opacity 0.5s linear;
 }
 
-.gallery img:hover{
+.gallery .gallery2:hover div{
     width: 150px;
     padding: 8px 15px;
     visibility: visible;

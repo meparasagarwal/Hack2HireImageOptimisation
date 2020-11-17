@@ -18,8 +18,7 @@ function App() {
         <Route exact path = "/Login" component = {Login}/>
         <Route exact path = "/home" component = {Home}/> 
         <Route exact path = "/images" component = {Images}/> 
-        <Route exact path = "/try" component = {Try}/> 
-        <Route exact path = "/try" component = {Images}/> 
+        <Route exact path = "/try" component = {Try}/>
         </Switch>
         </section>   
         </Fragment>   

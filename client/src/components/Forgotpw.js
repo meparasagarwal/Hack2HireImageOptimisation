@@ -1,6 +1,42 @@
-import React,{Fragment} from "react";
+import {Fragment} from "react";
+import React,{useState,useEffect} from "react";
+import axios from "axios";
+import {useHistory} from "react-router-dom";
 
 function Forgotpw(){
+      let history = useHistory();
+      let [alertMessage, setAlertMessage] = useState("");
+      let [className, setClassName] = useState("");
+      const [formData, setFormData] = useState({
+          email: "",
+      });
+      const {email}=formData;
+      const onChange = e =>
+          setFormData({
+              ...formData,
+              [e.target.name]: e.target.value
+          });
+    const onSubmit = async e => {
+        e.preventDefault();
+        await axios.post("/Forgot", {
+                email: email,
+            }).then((response) => {
+                if (response.status === 201){
+                    console.log(response)
+                }
+                else{
+                    setAlertMessage("Invalid email");
+                }
+            })
+            .catch(err => {
+                if (err.response) {
+                    setAlertMessage("Invalid credentials");
+                    setClassName("alert alert-danger");
+                } else {
+                    console.log(err);
+                }
+            })
+    }
     return(
         <Fragment>
         <section className = "landing" >
@@ -12,7 +48,16 @@ function Forgotpw(){
         style={{width:"40px",height:"30px"}} />  Dell Image Store</h1>
         </nav>
         <section class="container">
-        <h1 className="large text-primary" style={{color:"whitesmoke"}}>Coming Soon....!!</h1>
+        <h1 className="large text-primary" style={{color:"whitesmoke"}}>Enter your Email</h1>
+        <div className={className}>{alertMessage}</div>
+        <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
+       <div className="form-group">
+                        <input type="email" placeholder="Email Address" name="email"  value={email} onChange={e=>onChange(e)} />
+        </div>
+        <input type = "submit"
+        className = "btn btn-primary"
+        value = "Forgot Password" />
+        </form>
         </section>
         </div>
         </div>

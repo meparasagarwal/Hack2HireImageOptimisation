@@ -1,5 +1,6 @@
 import {Fragment} from "react";
 import React,{useState,useEffect} from "react";
+import Header from "./Header";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {Link} from "react-router-dom";
@@ -20,18 +21,22 @@ function Forgotpw(){
     const onSubmit = async e => {
         e.preventDefault();
         await axios.post("/Forgot", {
-                email: email,
+                email: email
             }).then((response) => {
                 if (response.status === 201){
-                    console.log(response)
+                    setAlertMessage("An Email has been sent to your mail");
+                    setClassName("alert alert-success");
+
                 }
                 else{
+                   
                     setAlertMessage("Invalid email");
                     setClassName("alert alert-danger")
                 }
             })
             .catch(err => {
                 if (err.response) {
+                    console.log(email);
                     setAlertMessage("Invalid credentials");
                     setClassName("alert alert-danger");
                 } else {
@@ -42,16 +47,7 @@ function Forgotpw(){
     return(
         <Fragment>
         <section className = "landing" >
-            <nav className= "navbar bg-dark">
-        <h1 className="text-primary" style={{fontSize:"40px"}} >
-		<img src="https://snpi.dell.com/snp/images/products/large/en-in~Dell_Logo_V2/Dell_Logo_V2.jpg" 
-        style={{width:"40px",height:"30px"}} />  Dell Image Store</h1>
-        <ul>
-        <li >
-        <Link to = "/login" style={{fontSize:"25px"}}>Login </Link> 
-        </li>
-        </ul>
-        </nav>
+        <Header />
         <div className = "dark-overlay" >
         <div className = "landing-inner" >
         

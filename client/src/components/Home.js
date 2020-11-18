@@ -64,10 +64,7 @@ function Home() {
 		else{
 			await axios.post("/Resize",data,config)
 			.then(response=>{
-				history.push({
-					pathname:'/Resize',
-					fileName:fileName,
-				});		
+				console.log(response)		
 				})
 		}
 		}

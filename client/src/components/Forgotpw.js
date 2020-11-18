@@ -2,13 +2,14 @@ import {Fragment} from "react";
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function Forgotpw(){
       let history = useHistory();
       let [alertMessage, setAlertMessage] = useState("");
       let [className, setClassName] = useState("");
       const [formData, setFormData] = useState({
-          email: "",
+          email: ""
       });
       const {email}=formData;
       const onChange = e =>
@@ -26,6 +27,7 @@ function Forgotpw(){
                 }
                 else{
                     setAlertMessage("Invalid email");
+                    setClassName("alert alert-danger")
                 }
             })
             .catch(err => {
@@ -40,13 +42,19 @@ function Forgotpw(){
     return(
         <Fragment>
         <section className = "landing" >
-                  <div className = "dark-overlay" >
-                  <div className = "landing-inner" >
-                  <nav className= "navbar bg-dark">
+            <nav className= "navbar bg-dark">
         <h1 className="text-primary" style={{fontSize:"40px"}} >
 		<img src="https://snpi.dell.com/snp/images/products/large/en-in~Dell_Logo_V2/Dell_Logo_V2.jpg" 
         style={{width:"40px",height:"30px"}} />  Dell Image Store</h1>
+        <ul>
+        <li >
+        <Link to = "/login" style={{fontSize:"25px"}}>Login </Link> 
+        </li>
+        </ul>
         </nav>
+        <div className = "dark-overlay" >
+        <div className = "landing-inner" >
+        
         <section class="container">
         <h1 className="large text-primary" style={{color:"whitesmoke"}}>Enter your Email</h1>
         <div className={className}>{alertMessage}</div>

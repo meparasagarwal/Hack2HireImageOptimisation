@@ -119,7 +119,7 @@ function Home() {
 					<div className="row">
 						<div className="col-sm-7 col-md-6 col-lg-5">
 							<div className="form-group">
-							<div {...getRootProps()}>
+							<div {...getRootProps()} className="dragndrop">
                                  <input {...getInputProps({onChange:event=>{fileName=event.target.files[0].name;result=fileName+" is selected"}})} />
                                     <p>Click here to upload a file or Drag n drop a file</p>
                                         </div>

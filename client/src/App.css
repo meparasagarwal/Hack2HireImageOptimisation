@@ -636,3 +636,8 @@ button {
     float: left;
     margin: 1.66%;
 }
+
+.dragndrop {
+    height: 100px;
+    width: 300px;
+}

@@ -468,3 +468,7 @@ button {
     height: 100px;
     width: 300px;
 }
+.resizeImage{
+    width:50%;
+    height:50%;
+}

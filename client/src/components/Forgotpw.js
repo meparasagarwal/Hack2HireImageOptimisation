@@ -1,12 +1,9 @@
 import {Fragment} from "react";
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import Header from "./Header";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
-import {Link} from "react-router-dom";
 
 function Forgotpw(){
-      let history = useHistory();
       let [alertMessage, setAlertMessage] = useState("");
       let [className, setClassName] = useState("");
       const [formData, setFormData] = useState({
@@ -51,12 +48,12 @@ function Forgotpw(){
         <div className = "dark-overlay" >
         <div className = "landing-inner" >
         
-        <section class="container">
+        <section className="container">
         <h1 className="large text-primary" style={{color:"whitesmoke"}}>Enter your Email</h1>
         <div className={className}>{alertMessage}</div>
         <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
        <div className="form-group">
-                        <input type="email" placeholder="Email Address" name="email"  value={email} onChange={e=>onChange(e)} />
+        <input type="email" placeholder="Email Address" name="email"  value={email} onChange={e=>onChange(e)} />
         </div>
         <input type = "submit"
         className = "btn btn-primary"

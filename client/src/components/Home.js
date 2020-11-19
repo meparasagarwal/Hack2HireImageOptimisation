@@ -64,20 +64,12 @@ function Home() {
 		else{
 			await axios.post("/Resize",data,config)
 			.then(response=>{
-				console.log(response)		
-				})
-		}
-		}
-
-        function renderUploadedImages(){
-			let temp;
-			if(uploadedImage.length>0){
-				temp=<div class="gallery3"><img src={uploadedImage} /></div>
-			}else{
-				temp=<div />
-			}
-			return temp;
-		}
+				console.log(response.data);
+				let data=response.data
+				history.push("/Resize",{data});
+			})
+	}
+}
 		function renderImages(){
 			let temp=[];
 			let i=0;

@@ -7,7 +7,6 @@ import Images from "./components/Images";
 import ForgotPw from "./components/Forgotpw";
 import Resize from "./components/Resize";
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
-import Message from "./components/Message";
 
 function App() {
     return (

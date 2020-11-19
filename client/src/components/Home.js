@@ -16,7 +16,6 @@ function Home() {
 	let [uploadedImage,setUploadedImage]=useState([]);
 	let [button,setButton]=useState((""));
 	let history = useHistory();
-	let history1=useHistory();
 	useEffect(()=>{
 		fetch("/home")
 		.then((response)=>{
@@ -65,7 +64,7 @@ function Home() {
 			await axios.post("/Resize",data,config)
 			.then(response=>{
 				console.log(response.data);
-				let data=response.data
+				let data=response.data;
 				history.push("/Resize",{data});
 			})
 	}

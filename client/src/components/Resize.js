@@ -9,7 +9,7 @@ class Resize extends Component{
 		image: null
 	  };
 	  componentDidMount() {
-		  let url=data;
+		  let url=this.props.location.state.data;
 		  console.log(url);		
 		  const image = new window.Image(); 
 		image.onload = () => {

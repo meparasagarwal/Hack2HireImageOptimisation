@@ -18,8 +18,8 @@ class Resize extends Component {
           this.transformer.attachTo(this.image);
         }
 	  );
-    image.src=url;
     }
+    image.src=url;
     console.log(image);
   };
   handleTransform = () => {
@@ -36,9 +36,20 @@ class Resize extends Component {
   };
   render() {
     return (
+      <Fragment>
+      <nav className= "navbar bg-dark">
+        <h1 className="text-primary" style={{fontSize:"40px"}} >
+		<img src="https://snpi.dell.com/snp/images/products/large/en-in~Dell_Logo_V2/Dell_Logo_V2.jpg" 
+        style={{width:"40px",height:"30px"}} />  Dell Image Store</h1>
+        <ul>
+		<li >
+		<Link onClick={e=>onClick(e)} style={{fontSize:"25px"}}>Logout</Link>
+        </li>
+        </ul>
+        </nav>
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
-          <Image
+          <Image className="reszieImage"
             image={this.state.image}
             ref={(node) => {
               this.image = node;
@@ -54,6 +65,7 @@ class Resize extends Component {
           />
         </Layer>
       </Stage>
+      </Fragment>
     );
   }
 }

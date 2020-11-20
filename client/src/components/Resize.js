@@ -3,14 +3,15 @@ import {Link, useHistory} from "react-router-dom";
 import { render } from "react-dom";
 import { Stage, Layer, Image, Transformer } from "react-konva";
 import axios from "axios";
+let data={};
+let url={};
 
 class Resize extends Component {
-  
   state = {
     image: null
   };
   componentDidMount(){
-  const url=this.props.location.state.data;
+   url=this.props.location.state.data;
     const image = new window.Image();
     image.onload = () => {
       this.setState(
@@ -36,8 +37,19 @@ class Resize extends Component {
       scaleY: this.image.scaleY()
     };
     console.log(props);
+    data.x=props.scaleX;
+    data.y=props.scaleY;
   };
-  
+  onSubmit=(e)=>{
+    e.preventDefault();
+    data.filepath=url;
+    console.log(data);
+    axios.post("./Saveresize",data)
+    .then((response)=>{
+      console.log(response);
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -52,7 +64,14 @@ class Resize extends Component {
         </ul>
         </nav>
         <center>
-      <Stage width={window.innerWidth} height={window.innerHeight} style={{marginTop:"10%",marginLeft:"35%"}}>
+        <div className="upload">
+        <h1>Click on the submit button once resizing is done</h1>
+        <form onSubmit={this.onSubmit}>
+        <input className = "btn btn-primary" type = "submit" value = "Submit"/>
+        </form>
+        </div>
+        </center>
+      <Stage width={window.innerWidth} height={window.innerHeight} className="container">
         <Layer>
           <Image
             image={this.state.image}
@@ -70,7 +89,6 @@ class Resize extends Component {
           />
         </Layer>
       </Stage>
-      </center>
       </Fragment>
     );
   }

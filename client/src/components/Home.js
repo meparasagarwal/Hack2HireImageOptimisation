@@ -5,7 +5,6 @@ import {useHistory} from "react-router-dom";
 import axios from "axios";
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
-import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
 import Resize from "./Resize"
 let files;
 let fileName='';

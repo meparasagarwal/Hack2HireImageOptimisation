@@ -76,8 +76,9 @@ function Home() {
 			let i=0;
 			if(images.length > 0){
 				images.map(image=>{
-					temp[i]=<div class="gallery2"><a href={image}><img src={image} /></a></div>
-					i=i+1
+					var link="/download/"+{image}+"";
+					temp[i]=<div class="gallery2"><a href={link}><img src={image} /></a></div>
+					i=i+1;
 				})
 			}
 			else{

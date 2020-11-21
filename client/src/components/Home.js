@@ -26,11 +26,16 @@ function Home() {
 				.then((response)=>{
 					setImages(response.data.image);
 				})}
-			})},[]);
+			})
+			.catch(err=>{
+			console.log(err);
+		})},[]);
 	const onClick=async e=>{
 		e.preventDefault();
 		await axios.get("/Login")
-		.then(response=>{history.push("/Login");
+		.then(response=>{history.push("/Login");})
+		.catch(err=>{
+			console.log(err);
 		})};
 
 
@@ -68,6 +73,8 @@ function Home() {
 				console.log(response.data);
 				let data=response.data;
 				history.push("/Resize",{data});
+			}).catch(err=>{
+				console.log(err);
 			})
 	}
 }

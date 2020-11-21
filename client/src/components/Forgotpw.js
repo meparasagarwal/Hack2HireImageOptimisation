@@ -22,11 +22,9 @@ function Forgotpw(){
             }).then((response) => {
                 if (response.status === 201){
                     setAlertMessage("An Email has been sent to your mail");
-                    setClassName("alert alert-success");
-
+                    setClassName("alert alert-success")
                 }
                 else{
-                   
                     setAlertMessage("Invalid email");
                     setClassName("alert alert-danger")
                 }

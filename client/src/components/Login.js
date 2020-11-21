@@ -14,6 +14,8 @@ function Login(){
 			if (response.status === 201){
         history.push("/home");
       }
+    }).catch(err=>{
+      console.log(err)
     })
   });
   const [formData,setFormData]=useState({
@@ -32,6 +34,7 @@ function Login(){
             }).then((response)=>{history.push("/home")})
             .catch(err=>{
               if(err.response){
+                console.log(err.response);
                  setAlertMessage("Invalid credentials");
           setClassName("alert alert-danger");
               }else{

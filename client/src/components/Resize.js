@@ -1,10 +1,7 @@
 import React, { Component,Fragment,useState } from "react";
-import {Link, useHistory} from "react-router-dom";
-import { render } from "react-dom";
 import { Stage, Layer, Image, Transformer } from "react-konva";
 import axios from "axios";
 import Spinner from "./Spinner";
-import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 let data={x:1,y:1};
 let url={};
 
@@ -70,7 +67,7 @@ class Resize extends Component {
         <center>
         <div className="upload">
         <h1>Click on the submit button once resizing is done</h1>
-        <div><p><b>{this.state.isLoading ? null :this.state.result}</b></p></div>
+        <div><p><b>{this.state.isLoading ? null : this.state.result}</b></p></div>
         <div>{this.state.isLoading ? <Spinner /> :null} </div>
         <form onSubmit={this.onSubmit}>
         <input className = "btn btn-primary" type = "submit" value = "Submit"/>

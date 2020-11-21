@@ -36,7 +36,6 @@ class Resize extends Component {
       scaleX: this.image.scaleX(),
       scaleY: this.image.scaleY()
     };
-    console.log(props);
     data.x=props.scaleX;
     data.y=props.scaleY;
   };
@@ -62,7 +61,7 @@ class Resize extends Component {
       <nav className= "navbar bg-dark">
         <h1 className="text-primary" style={{fontSize:"40px"}} >
 		    <img src="https://snpi.dell.com/snp/images/products/large/en-in~Dell_Logo_V2/Dell_Logo_V2.jpg"  
-        style={{width:"40px",height:"30px"}} />  Dell Image Store</h1>
+        style={{width:"50px",height:"40px"}} />  Dell Image Store</h1>
         </nav>
         <center>
         <div className="upload">
@@ -74,7 +73,7 @@ class Resize extends Component {
         </form>
         </div>
         </center>
-      <Stage width={window.innerWidth} height={window.innerHeight} className="container">
+      <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
           <Image
             image={this.state.image}

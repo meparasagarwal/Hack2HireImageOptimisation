@@ -3,9 +3,6 @@ import {Link} from "react-router-dom";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import Header from "./Header";
-//import {Redirect} from "react-router-dom";
-
-
 
 function Register(){
   const [formData,setFormData]=useState({
@@ -49,8 +46,9 @@ function Register(){
           <div className = "landing-inner" >
           <section className="container">
           <h1 className="large text-primary" style={{color:"whitesmoke"}}>Want to Compress Images?</h1>
-            <h1 className="large text-primary">Register</h1>
-            <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+          <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_fs9vyjnp.json"  background="transparent" speed="1"  
+                   style={{width: "400px",height: "150px",marginLeft:"15%"}} loop autoplay></lottie-player>
+            <p className="lead text-primary"><i className="fas fa-user"></i> Create Your Account</p>
             <div className={className}>{alertMessage}</div>
             <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
               <div className="form-group">

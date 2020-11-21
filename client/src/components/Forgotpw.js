@@ -33,7 +33,6 @@ function Forgotpw(){
             })
             .catch(err => {
                 if (err.response) {
-                    console.log(email);
                     setAlertMessage("Invalid credentials");
                     setClassName("alert alert-danger");
                 } else {
@@ -47,7 +46,6 @@ function Forgotpw(){
         <Header />
         <div className = "dark-overlay" >
         <div className = "landing-inner" >
-        
         <section className="container">
         <h1 className="large text-primary" style={{color:"whitesmoke"}}>Enter your Email</h1>
         <div className={className}>{alertMessage}</div>

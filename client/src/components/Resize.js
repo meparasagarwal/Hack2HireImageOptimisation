@@ -45,7 +45,6 @@ class Resize extends Component {
     })
     e.preventDefault();
     data.filepath=url;
-    console.log(data);
     axios.post("./Saveresize",data)
     .then((response)=>{
       this.setState({

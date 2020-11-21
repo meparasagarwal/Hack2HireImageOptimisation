@@ -47,8 +47,8 @@ function Login(){
                   <section className="container">
                   <h1 className="large" style={{color:"whitesmoke"}}>Login and Compress Images</h1>
                   <lottie-player src="https://assets3.lottiefiles.com/private_files/lf30_fs9vyjnp.json"  background="transparent" speed="1"  
-                   style={{width: "400px",height: "150px",marginLeft:"15%"}} loop autoplay></lottie-player>
-                    <p className="lead text-primary"><i className="fas fa-user"></i>Login to your Account</p>
+                   style={{width: "400px",height:"140px",marginLeft:"15%"}} loop autoplay></lottie-player>
+                    <p className="lead text-primary"><i className="fas fa-user"></i> Login to your Account</p>
                     <div className={className}>{alertMessage}</div>
                     <form className="form" onSubmit={e=>onSubmit(e)} autoComplete="off">
                       <div className="form-group">
@@ -63,15 +63,16 @@ function Login(){
                           onChange={e=>onChange(e)}
                           minLength="6"
                         />
-                      </div>
-                      <input type="submit" className="btn btn-primary" value="Login" />
-                    </form>
-                    <p className="my-1">
-                      Already have an account? <Link to="/">Register</Link>
-                    </p>
-                     <p className="my-1">
-                      <Link to="/forgotpw">Forgot password?</Link>
-                    </p>
+                        <br></br>
+                        <input type="submit" className="btn btn-primary" value="Login" />
+                        <p className="my-1">
+                        Already have an account? <Link to="/">Register</Link>
+                      </p>
+                       <p className="my-1">
+                        <Link to="/forgotpw">Forgot password?</Link>
+                      </p>
+                        </div>
+                         </form>
                   </section>
                   </div>
                   </div>

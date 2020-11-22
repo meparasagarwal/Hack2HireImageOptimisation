@@ -95,11 +95,13 @@ function Home() {
 							responseType:'blob'
 						})
 						.then((response)=>{
-							const utl=window.URL.createObjectURL(new Blob([response.data]))
+							const url=window.URL.createObjectURL(new Blob([response.data]))
 							const link=document.createElement('a')
-							link.href=link
+							link.href=url
 							link.setAttribute('download','image.jpg')
+							document.body.appendChild(link);
 							link.click();
+							
 						})
 					}
 					temp[i]=<div class="gallery2"><img src={image} alt="download_image" onClick={e=>handleOnClick(e)}/></div>

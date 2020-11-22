@@ -83,7 +83,10 @@ function Home() {
 			let i=0;
 			if(images.length > 0){
 				images.map(image=>{
-					var link="/download/"+{image}+"";
+					var l=image.length;
+					var image1=image;
+					image1=image1.slice(50,l+1);
+					var link="https://hack2hirebackend.herokuapp.com/download/"+image1+""
 					temp[i]=<div class="gallery2"><a href={link}><img src={image} /></a></div>
 					i=i+1;
 				})

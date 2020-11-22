@@ -21,7 +21,8 @@ function Register(){
   const onSubmit=async e => {
     e.preventDefault();
     if(password !== password2){
-      alert("Passwords don't match",'danger');
+      setAlertMessage("Passwords don't match",'danger');
+      setClassName("alert alert-danger")
     }else{
      await axios.post("/register",{
         name:name,

@@ -81,18 +81,28 @@ function Home() {
 		function renderImages(){
 			let temp=[];
 			let i=0;
+			
 			if(images.length > 0){
 				images.map(image=>{
 					var l=image.length;
 					var image1=image;
 					image1=image1.slice(50,l+1);
 					var link="download/"+image1+"";
-					var result_link="";
-					axios.get(link)
-					.then((response)=>{
-						console.log(response);
-					})
-					temp[i]=<div class="gallery2"><a href={link}><img src={image} /></a></div>
+					const handleOnClick=async e=>{
+						await axios({
+							url:link,
+							method:'GET',
+							responseType:'blob'
+						})
+						.then((response)=>{
+							const utl=window.URL.createObjectURL(new Blob([response.data]))
+							const link=document.createElement('a')
+							link.href=link
+							link.setAttribute('download','image.jpg')
+							link.click();
+						})
+					}
+					temp[i]=<div class="gallery2"><img src={image} alt="download_image" onClick={e=>handleOnClick(e)}/></div>
 					i=i+1;
 				})
 			}

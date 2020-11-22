@@ -86,7 +86,12 @@ function Home() {
 					var l=image.length;
 					var image1=image;
 					image1=image1.slice(50,l+1);
-					var link="https://hack2hirebackend.herokuapp.com/download/"+image1+""
+					var link="download/"+image1+"";
+					var result_link="";
+					axios.get(link)
+					.then((response)=>{
+						console.log(response);
+					})
 					temp[i]=<div class="gallery2"><a href={link}><img src={image} /></a></div>
 					i=i+1;
 				})

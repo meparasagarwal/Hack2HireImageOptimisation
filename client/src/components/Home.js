@@ -9,6 +9,7 @@ import Spinner from "./Spinner";
 let files;
 let fileName='';
 let result='';
+let image1='';
  
 function Home() {
   let [images,setImages]=useState([]);
@@ -85,7 +86,7 @@ function Home() {
 			if(images.length > 0){
 				images.map(image=>{
 					var l=image.length;
-					var image1=image;
+					image1=image;
 					image1=image1.slice(50,l+1);
 					var link="download/"+image1+"";
 					const handleOnClick=async e=>{
@@ -98,7 +99,13 @@ function Home() {
 							const url=window.URL.createObjectURL(new Blob([response.data]))
 							const link=document.createElement('a')
 							link.href=url
-							link.setAttribute('download','image.jpg')
+							var name = e.target.src
+							console.log(name[name.length-2])
+							if (name[name.length - 2] === "n"){
+							link.setAttribute('download', 'image.png')}
+							else {
+								link.setAttribute('download', 'image.jpg')
+							}
 							document.body.appendChild(link);
 							link.click();
 							

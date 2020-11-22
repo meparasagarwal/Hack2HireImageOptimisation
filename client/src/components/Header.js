@@ -10,6 +10,7 @@ function Header() {
         <ul>
         <li >
         <Link to = "/login" style={{fontSize:"25px"}}>Login </Link> 
+        <Link to = "/" style={{fontSize:"25px"}}>Register</Link> 
         </li>
         </ul>
         </nav>
